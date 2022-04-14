@@ -19,7 +19,7 @@ from .seeds import seed_commands
 from .config import Config
 
 from prometheus_flask_exporter import PrometheusMetrics
-
+from prometheus_client import generate_latest
 
 logging.basicConfig(level=logging.INFO)
 logging.info("Setting LOGLEVEL to INFO")
@@ -83,6 +83,9 @@ def inject_csrf_token(response):
         httponly=True)
     return response
 
+@app.route('/metrics')
+def metrics():
+    return generate_latest()
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -90,12 +93,3 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
-
-
-@app.route('/flask-prometheus-grafana-example/')
-def hello():
-    return jsonify(say_hello())
-
-
-def say_hello():
-    return {'message': 'hello'}
