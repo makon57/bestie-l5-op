@@ -86,9 +86,6 @@ def inject_csrf_token(response):
         httponly=True)
     return response
 
-@app.route('/metrics')
-def metrics():
-    return generate_latest()
 
 @app.route('/metrics')
 def metrics():
