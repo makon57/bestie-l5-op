@@ -21,26 +21,16 @@ from .seeds import seed_commands
 from .config import Config
 
 from prometheus_flask_exporter import PrometheusMetrics
-from prometheus_client import generate_latest, Counter
+from prometheus_client import generate_latest
 
 logging.basicConfig(level=logging.INFO)
 logging.info("Setting LOGLEVEL to INFO")
 
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
+metrics = PrometheusMetrics(app, defaults_prefix="bestie")
 
 metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
-
-# h = Histogram('request_latency_seconds', 'Description of histogram')
-# h.observe(4.7)    # Observe 4.7 (seconds in this case)
-
-# s = Summary('request_latency_seconds', 'Description of summary')
-# s.observe(4.7)    # Observe 4.7 (seconds in this case)
-
-c = Counter('my_requests_total', 'HTTP Failures', ['method', 'endpoint'])
-c.labels('get', '/').inc()
-c.labels('get', '/applications/*').inc()
 
 
 # Setup login manager
@@ -95,13 +85,6 @@ def inject_csrf_token(response):
             'FLASK_ENV') == 'production' else None,
         httponly=True)
     return response
-
-
-@app.route('/flask-prometheus-grafana-example/')
-def hello():
-    return jsonify(say_hello())
-def say_hello():
-    return {'message': 'hello'}
 
 
 @app.route('/metrics')
