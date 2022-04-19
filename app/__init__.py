@@ -1,6 +1,8 @@
 from app.models import listing
 import os
 import logging
+import time
+import sys
 from flask import Flask, render_template, request, session, redirect, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -26,9 +28,10 @@ logging.info("Setting LOGLEVEL to INFO")
 
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
+metrics = PrometheusMetrics(app, defaults_prefix="bestie")
 
 metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -86,6 +89,11 @@ def inject_csrf_token(response):
 @app.route('/metrics')
 def metrics():
     return generate_latest()
+
+@app.route('/metrics')
+def metrics():
+    return generate_latest()
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
