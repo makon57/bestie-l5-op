@@ -1,6 +1,6 @@
 
 .options-contianer {
-    background-color: rgb(255, 89, 74);
+    background-color: rgb(74, 219, 255);
     display: grid;
     grid-template-columns: .5fr 1fr 1fr 1fr 1fr .5fr;
     grid-template-areas:
@@ -26,7 +26,7 @@ html, body {
 h2 {
     font-family: 'Bebas Neue';
     font-size: 45px;
-    color:  rgb(255, 89, 74);
+    color:  rgb(74, 219, 255);
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -120,7 +120,7 @@ h3 {
 
 
 .applications {
-    background-color: rgb(255, 89, 74);
+    background-color: rgb(74, 219, 255);
     color: white;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -165,7 +165,7 @@ h3 {
 }
 
 .vol-don button {
-    background-color: rgb(255, 89, 74);
+    background-color: rgb(74, 219, 255);
     color: white;
     height: 50px;
     width: 30%;

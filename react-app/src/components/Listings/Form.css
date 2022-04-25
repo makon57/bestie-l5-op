@@ -61,7 +61,7 @@ body {
 }
 
 .background-div {
-    background-color: rgb(255, 89, 74);
+    background-color: rgb(74, 219, 255);
     margin: 5% 20% 5% 20%;
     grid-template-rows: 600px 1fr;
     grid-template-areas:
@@ -181,7 +181,7 @@ body {
     top: 100%;
     left: 10%;
     z-index: auto;
-    background-color: rgb(255, 89, 74);
+    background-color: rgb(74, 219, 255);
 }
 
 .footer {
