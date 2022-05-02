@@ -72,7 +72,7 @@ To build/run project locally, please follow these steps:
 1. Clone this repository
 
 ```shell
-git clone https://github.com/makon57/bestie.git
+git clone https://github.com/makon57/bestie-l5-op.git
 ```
 
 2. Install Pipfile dependencies and create the virtual environment
